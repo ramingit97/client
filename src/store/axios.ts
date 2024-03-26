@@ -10,7 +10,7 @@ import { Mutex } from 'async-mutex'
 import { ILoginResponse } from 'src/store/features/auth/AuthApi';
 import { logout } from './reducers/UserSlice';
 
-export const API_URL = "http://localhost:3002/"
+export const API_URL = "http://localhost:3000/api/"
 const mutex = new Mutex()
 const baseQuery = fetchBaseQuery({ baseUrl: API_URL,
   prepareHeaders(headers, api) {
@@ -33,21 +33,27 @@ export const baseQueryWithReauth: BaseQueryFn<
     if (!mutex.isLocked()) {
       const release = await mutex.acquire()
       try {
+        console.log("123123123");
+        
         const refreshResult = await baseQuery(
-          { credentials: 'include', url: 'auth/refresh',method:"POST" },
+          { credentials: 'include', url: 'user/refresh_token',method:"POST" },
           api,
           extraOptions
         )
+
+        console.log('asdad',refreshResult);
+        
         if (refreshResult.data) {
           const loginResponse = refreshResult.data as ILoginResponse;
           const accessToken = loginResponse.access_token;
           localStorage.setItem('token', accessToken);
           result = await baseQuery(args, api, extraOptions)
         } else {
-          localStorage.removeItem("token");
-          api.dispatch(logout());
+          
         }
       } finally {
+        localStorage.removeItem("token");
+          api.dispatch(logout());
         // release must be called once the mutex should be released again.
         release()
       }

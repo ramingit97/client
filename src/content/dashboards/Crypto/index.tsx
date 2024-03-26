@@ -12,7 +12,9 @@ import { useAppSelector } from 'src/hooks/redux';
 
 function DashboardCrypto() {
 
-  // const state = useAppSelector(state=>state.userReducer.user);
+  const state = useAppSelector(state=>state.userReducer.user);
+  console.log(state);
+  
 
   return (
     <>

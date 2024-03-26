@@ -12,4 +12,5 @@ export interface CryptoOrder {
   amount: number;
   cryptoCurrency: string;
   currency: string;
+  name?:string;
 }

@@ -22,8 +22,8 @@ function SignIn() {
 
   const formik = useFormik({
     initialValues: {
-      email: 'ramin.web.297@gmail.com',
-      password: '123456',
+      email: 'ramin2.web.97@gmail.com',
+      password: 'Nermin.1998',
     },
     validationSchema: Yup.object({
       email: Yup

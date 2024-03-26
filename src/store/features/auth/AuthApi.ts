@@ -17,7 +17,7 @@ export const authApi = createApi({
     registerUser: builder.mutation<any, IRegisterInput>({
       query(data) {
         return {
-          url: 'auth/register',
+          url: 'user/register',
           method: 'POST',
           body: data,
         };
@@ -29,7 +29,7 @@ export const authApi = createApi({
     >({
       query(data:ILoginInput) {
         return {
-          url: 'auth/login',
+          url: 'user/login',
           method: 'POST',
           body: data,
           credentials: 'include',

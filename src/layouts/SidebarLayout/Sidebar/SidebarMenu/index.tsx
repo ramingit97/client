@@ -255,6 +255,23 @@ function SidebarMenu() {
               </ListItem>
             </List>
           </SubMenuWrapper>
+
+
+          <SubMenuWrapper>
+            <List component="div">
+              <ListItem component="div">
+                <Button
+                  disableRipple
+                  component={RouterLink}
+                  onClick={closeSidebar}
+                  to="/management/orders"
+                  startIcon={<TableChartTwoToneIcon />}
+                >
+                  Orders List
+                </Button>
+              </ListItem>
+            </List>
+          </SubMenuWrapper>
         </List>
         <List
           component="div"

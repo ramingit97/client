@@ -4,6 +4,11 @@ export interface IUser{
     email:string;
 }
 
+export interface IUserResponse{
+    user:IUser;
+    result:boolean;
+}
+
 
 export interface IRegisterInput{
     name:string;

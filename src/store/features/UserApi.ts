@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
-import { IUser } from 'src/models/IUser'
+import { IUser, IUserResponse } from 'src/models/IUser'
 import { baseQueryWithReauth } from '../axios'
 import { setUser } from '../reducers/UserSlice'
 // maxRetries: 5 is the default, and can be omitted. Shown for documentation purposes.
@@ -17,17 +17,17 @@ export const userApi = createApi({
         }
     }),
     }),
-    getMe: build.query<IUser, null>({
+    getMe: build.query<IUserResponse, null>({
       query() {
         return {
-          url: 'auth/getMe',
+          url: 'user/me',
           credentials: 'include',
         };
       },
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const data  = await queryFulfilled;
-          dispatch(setUser(data.data));
+          dispatch(setUser(data.data.user));
         } catch (error) {}
       },
     }),

@@ -1,12 +1,16 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./reducers/UserSlice";
+import orderReducer from "./reducers/orders/OrderSlice";
 import { userApi } from "./features/UserApi";
 import { authApi } from "./features/auth/AuthApi";
+import { ordersApi } from "./features/orders/ordersApi";
 
 const rootReducer = combineReducers({
     userReducer,
+    orderReducer,
     [userApi.reducerPath]:userApi.reducer,
     [authApi.reducerPath]:authApi.reducer,
+    [ordersApi.reducerPath]:ordersApi.reducer
 });
 
 export const setupStore = ()=>{
@@ -16,6 +20,7 @@ export const setupStore = ()=>{
              return getDefaultMiddleware().concat(
                 userApi.middleware,
                 authApi.middleware,
+                ordersApi.middleware
              )
          },
     });

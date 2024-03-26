@@ -1,11 +1,11 @@
 import { Typography, Avatar, Grid } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { useAppSelector } from 'src/hooks/redux';
+import { IUser } from 'src/models/IUser';
 
 function PageHeader() {
-  const user = {
-    name: 'Catherine Pike',
-    avatar: '/static/images/avatars/1.jpg'
-  };
+  const user:IUser = useAppSelector(state=>state.userReducer.user);
+
   const theme = useTheme();
 
   return (
@@ -19,7 +19,7 @@ function PageHeader() {
           }}
           variant="rounded"
           alt={user.name}
-          src={user.avatar}
+          // src={user.avatar}
         />
       </Grid>
       <Grid item>
