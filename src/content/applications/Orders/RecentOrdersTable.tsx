@@ -302,7 +302,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    Status
+                  {cryptoOrder.status}
                     {/* {getStatusLabel(cryptoOrder.status)} */}
                   </TableCell>
                   <TableCell align="right">

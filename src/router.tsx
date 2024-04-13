@@ -42,6 +42,10 @@ const Orders = Loader(
   lazy(() => import('src/content/applications/Orders'))
 );
 
+const Chat = Loader(
+  lazy(() => import('src/content/applications/Chat/Chat'))
+);
+
 const UserProfile = Loader(
   lazy(() => import('src/content/applications/Users/profile'))
 );
@@ -185,6 +189,10 @@ const routes: RouteObject[] = [
       {
         path: 'orders',
         element: <Orders />
+      },
+      {
+        path: 'chat',
+        element: <Chat/>
       },
       {
         path: 'profile',
