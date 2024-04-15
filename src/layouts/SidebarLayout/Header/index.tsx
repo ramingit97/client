@@ -18,6 +18,7 @@ import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
 import HeaderMenu from './Menu';
+import { SocketContext } from 'src/contexts/SocketContext';
 
 const HeaderWrapper = styled(Box)(
   ({ theme }) => `
@@ -40,6 +41,12 @@ const HeaderWrapper = styled(Box)(
 
 function Header() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
+
+
+  const {socket} = useContext(SocketContext)
+
+  console.log(socket.id,"socket id")
+
   const theme = useTheme();
 
   return (
